@@ -6,7 +6,7 @@ public class Location {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private float kilometrage;
-    private static Vector<Scooter> location;
+    private Vector<Scooter> location = new Vector<Scooter>();
     private Client client;
     private Retoure retour;
     
@@ -14,6 +14,7 @@ public class Location {
         this.dateDebut = date_debut;
         this.dateFin = date_fin;
         this.client = client;
+        scooter.estDisponible = false;
         location.add(scooter);
     }
 

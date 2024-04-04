@@ -51,10 +51,13 @@ public class Engine {
 
     public void retourScooter(Client client,float kilometrage,int idScooter,LocalDate date_retour){
         try {
-            Location location = new Location();
-            location.setRetour(kilometrage, date_retour,client);
+            parc.locations.forEach(element ->{
+                if(element.getClient().getIdClient()==client.getIdClient()){
+                    element.setRetour(kilometrage, date_retour, client);
+                }
+            });
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("error: "+e);
         }
     }
 

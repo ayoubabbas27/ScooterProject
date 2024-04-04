@@ -10,7 +10,7 @@ public class Parc {
     private  int nbrScootersDisponibles;
 
     private  int nbrScootersLoues;
-
+    public Vector<Location> locations = new Vector<Location>();
     public  Vector<Scooter> Listscooter =new Vector<Scooter>();
     public  Vector<Client> LIstClient = new Vector<Client>();
     public  Vector<Retoure> listRetour = new Vector<Retoure>();
@@ -50,7 +50,7 @@ public class Parc {
     }
 
     public  void louerScooter(Client client,Scooter scooter,LocalDate date_debut,LocalDate date_fin){
-        new Location(client, scooter, date_debut, date_fin);
+        locations.add(new Location(client, scooter, date_debut, date_fin));
     }
     
     public  Vector<Scooter> getListscooter() {
