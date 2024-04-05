@@ -15,7 +15,8 @@ public class Parc {
     public  Vector<Client> LIstClient = new Vector<Client>();
     public  Vector<Retoure> listRetour = new Vector<Retoure>();
 
-    public Parc() {
+    public Parc(int nombreScooter) {
+        this.nbrMaxScooters = nombreScooter;
     }
 
     private int getScooterLouer(){

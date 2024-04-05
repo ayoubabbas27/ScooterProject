@@ -1,12 +1,11 @@
 package model;
 import java.time.LocalDate;
-import java.util.*;
 
 public class Location {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private float kilometrage;
-    private Vector<Scooter> location = new Vector<Scooter>();
+    private Scooter location;
     private Client client;
     private Retoure retour;
     
@@ -15,7 +14,7 @@ public class Location {
         this.dateFin = date_fin;
         this.client = client;
         scooter.estDisponible = false;
-        location.add(scooter);
+        location=scooter;
     }
 
     public Location(){
@@ -23,6 +22,8 @@ public class Location {
     }
 
     public void setRetour(float kilometrage,LocalDate date_retour,Client client) {
+        this.location.kilometrage = kilometrage;
+        this.location.estDisponible = true;
         this.retour = new Retoure(client,date_retour, kilometrage, this);
     }
     public Client getClient() {
@@ -37,7 +38,7 @@ public class Location {
     public float getKilometrage() {
         return kilometrage;
     }
-    public Vector<Scooter> getLocation() {
+    public Scooter getLocation() {
         return location;
     }
     public Retoure getRetour() {

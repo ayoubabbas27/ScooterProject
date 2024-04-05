@@ -4,10 +4,31 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-
-        Engine engine = new Engine(new Parc());
-
+        Scanner input = new Scanner(System.in);
         System.out.println("bienvenue dans notre programe");
+        
+        System.out.println("donner le nombre de scooter que vous avez dans votre parc: ");
+        int nombreScooter = input.nextInt();
+        Engine engine = new Engine(new Parc(nombreScooter));
+        if(nombreScooter>0){
+            for(int index = 0 ; index<nombreScooter;index++){
+                String model;
+                float kilo;
+                int dispo;
+                System.out.println("donner sont model: ");
+                model = input.next();
+                System.out.println("donner sont kilometrage:  ");
+                kilo = input.nextFloat();
+                System.out.println("donner ca disponibilite: 1->disponible 2->non Disponible");
+                dispo = input.nextInt();
+                if(dispo==1){
+                    engine.ajouterScooter(model, kilo, true);
+                }else{
+                    engine.ajouterScooter(model, kilo, false);
+                }
+            }
+        }
+
         System.out.println("S'il vous plait choisie une option:" );
         System.out.println("1-> ajouter scooter: ");
         System.out.println("2-> supprimer scooter: ");
@@ -16,70 +37,101 @@ public class Main{
         System.out.println("5-> afficher etat scooter scooter: ");
         System.out.println("6-> afficher parc ensemble scooter: ");
         System.out.println("7-> afficher resultat de parc scooter: ");
-        Scanner input = new Scanner(System.in);
         int response;
         do {
             
             response = input.nextInt();
             switch (response) {
                 case 1:
-                    System.out.println("donner votre model de scooter: ");
-                    String model = input.next();
-                    System.out.println("donner sont kilometrage: ");
-                    float kilometrage = input.nextFloat();
-                    System.out.println("est disponibles: 1 pour vrai 0 pour faux ");
-                    int tmporary = input.nextInt();
-                    boolean estDisponible;
-                    if(tmporary==1){
-                        estDisponible = true;
-                    }else{
-                        estDisponible = false;
+                    try {
+                        System.out.println("donner votre model de scooter: ");
+                        String model = input.next();
+                        System.out.println("donner sont kilometrage: ");
+                        float kilometrage = input.nextFloat();
+                        System.out.println("est disponibles: 1 pour vrai 0 pour faux ");
+                        int tmporary = input.nextInt();
+                        boolean estDisponible;
+                        if(tmporary==1){
+                            estDisponible = true;
+                        }else{
+                            estDisponible = false;
+                        }
+                    
+                        engine.ajouterScooter(model, kilometrage, estDisponible);
+                    } catch (Exception e) {
+                        System.out.println("une erreur c'est produit");
                     }
-                
-                    engine.ajouterScooter(model, kilometrage, estDisponible);
                     break;
                 case 2:
-                    System.out.println("donner id de scooter: ");
-                    int idscooter = input.nextInt();
-                    engine.supprimerScooter(idscooter);
+                    try{
+                        System.out.println("donner id de scooter: ");
+                        int idscooter = input.nextInt();
+                        engine.supprimerScooter(idscooter);
+                    }catch(Exception e){
+                        System.out.println("une erreur c'est produit");
+                    }
                     break;
                 case 3:
-                    System.out.println("donner nom de clinet:");
-                    String nom = input.next();
-                    System.out.println("donner sont prenom:");
-                    String prenom = input.next();
-                    System.out.println("donner sont numero de telephone");
-                    String telephone = input.next();
-                    Client tmpClient = engine.parc.getClientByPhone(telephone);
-                    if(tmpClient!=null){    
-                        engine.parc.LIstClient.add(new Client(nom, prenom, telephone));
+                    try {
+                        System.out.println("donner nom de clinet:");
+                        String nom = input.next();
+                        System.out.println("donner sont prenom:");
+                        String prenom = input.next();
+                        System.out.println("donner sont numero de telephone");
+                        String telephone = input.next();
+                        Client tmpClient = engine.parc.getClientByPhone(telephone);
+                        if(tmpClient!=null){    
+                            engine.parc.LIstClient.add(new Client(nom, prenom, telephone));
+                        }
+                        System.out.println("donner id scooter: ");
+                        int identifiant = input.nextInt();
+                        engine.louerScooter(engine.parc.getClientByPhone(telephone), identifiant);
+                    } catch (Exception e) {
+                        System.out.println("une erreur c'est produit ");
                     }
-                    System.out.println("donner id scooter: ");
-                    int identifiant = input.nextInt();
-                    engine.louerScooter(engine.parc.getClientByPhone(telephone), identifiant);
                     break;
                 case 4:
-                    System.out.println("donne le nouveau kilometrage");
-                    float kilom = input.nextFloat();
-                    System.out.println("donner date de retour");
-                    String tmp = input.next();
-                    LocalDate date_retour = LocalDate.parse(tmp);
-                    System.out.println("donner id scooter");
-                    int idScot = input.nextInt();
-                    System.out.println("donner numero telephone:");
-                    String tel = input.next();
-                    engine.retourScooter(engine.parc.getClientByPhone(tel), kilom, idScot, date_retour);
+                    try {
+                        System.out.println("donner id scooter");
+                        int idScot = input.nextInt();
+                        System.out.println("donne le nouveau kilometrage");
+                        float kilom = input.nextFloat();
+                        System.out.println("donner date de retour");
+                        String tmp = input.next();
+                        LocalDate date_retour = LocalDate.parse(tmp);
+                        System.out.println("donner numero telephone:");
+                        String tel = input.next();
+                        engine.retourScooter(engine.parc.getClientByPhone(tel), kilom, idScot, date_retour);    
+                    } catch (Exception e) {
+                        System.out.println("une erreur c'est produit");
+                    }
+                    
                     break;
                 case 5:
+                try {
                     System.out.println("donner id de scooter");
                     int id = input.nextInt();
                     engine.etatScooter(id);
+                    
+                } catch (Exception e) {
+                    System.out.println("une erreur c'est produit");
+                }
                     break;
                 case 6:
-                    engine.etatParcEnsembleScooter();
+                    try{
+
+                        engine.etatParcEnsembleScooter();
+                    }catch(Exception e){
+                        System.out.println("une erreur c'est produit");
+                    }
                     break;
                 case 7:
-                    engine.parcDesScooter();
+                    try{
+
+                        engine.parcDesScooter();
+                    }catch(Exception e){
+                        System.out.println("une erreur c'est produit");
+                    }
                     break;
                 default:
                 System.out.println("votre choix n'exist pas ai revoire :)");
