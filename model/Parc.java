@@ -22,7 +22,7 @@ public class Parc {
     private int getScooterLouer(){
         int tmp = 0;
         for (Scooter elScooter : this.Listscooter) {
-            if(elScooter.estDisponible == false){
+            if(elScooter.isFree(LocalDate.now(), LocalDate.now())){
                 tmp++;
             }
         }

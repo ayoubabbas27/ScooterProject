@@ -13,7 +13,6 @@ public class Location {
         this.dateDebut = date_debut;
         this.dateFin = date_fin;
         this.client = client;
-        scooter.estDisponible = false;
         location=scooter;
     }
 
@@ -23,7 +22,6 @@ public class Location {
 
     public void setRetour(float kilometrage,LocalDate date_retour,Client client) {
         this.location.kilometrage = kilometrage;
-        this.location.estDisponible = true;
         this.retour = new Retoure(client,date_retour, kilometrage, this);
     }
     public Client getClient() {
@@ -44,6 +42,18 @@ public class Location {
     public Retoure getRetour() {
         return retour;
     }
-
+    public boolean isIntersect(LocalDate date_1 , LocalDate date_2){
+        if(date_1.isAfter(this.dateDebut)&&date_2.isBefore(date_2)){
+            return false;
+        }else if(date_1.isAfter(this.dateDebut)&&date_2.isAfter(this.dateFin)&&date_1.isBefore(this.dateFin)){
+            return false;
+        }else if(date_1.isBefore(this.dateDebut)&&date_2.isAfter(this.dateDebut)&&date_2.isBefore(this.dateFin)){
+            return false;
+        }else if(date_1.isBefore(this.dateDebut)&&date_2.isAfter(this.dateFin)){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 }

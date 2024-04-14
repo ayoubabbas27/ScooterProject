@@ -56,7 +56,9 @@ public class Engine {
                     element.setRetour(kilometrage, date_retour, client);
                     parc.listRetour.add(new Retoure(client, date_retour, kilometrage, element));
                     element.getLocation().kilometrage = kilometrage;
-                    element.getLocation().estDisponible = true;
+                    element.getLocation().listLocation.forEach(element->{
+                        if(element.getRetour().)
+                    });
                 }
             });
         } catch (Exception e) {
