@@ -21,7 +21,7 @@ public class Engine {
         tempo = input.next();
         LocalDate date_fin = LocalDate.parse(tempo);
         try {
-            if(scooter!=null||scooter.getEtat()){
+            if(scooter!=null||scooter.isFree(date_debut, date_fin)){
                 parc.louerScooter(client, scooter, date_debut, date_fin);
             }else{
                 System.out.println("ce n'exist pas :(");
