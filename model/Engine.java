@@ -33,7 +33,7 @@ public class Engine {
     }
 
     public void ajouterScooter(String model , float kilometrage , boolean estDisponible){
-        parc.setListScotter(new Scooter(model, kilometrage, estDisponible));
+        parc.setListScotter(new Scooter(model, kilometrage));
     }
 
     public void supprimerScooter(int idScooter){
@@ -56,8 +56,10 @@ public class Engine {
                     element.setRetour(kilometrage, date_retour, client);
                     parc.listRetour.add(new Retoure(client, date_retour, kilometrage, element));
                     element.getLocation().kilometrage = kilometrage;
-                    element.getLocation().listLocation.forEach(element->{
-                        if(element.getRetour().)
+                    element.getLocation().listLocation.forEach(e->{
+                        if(e.isIntersect(e.getRetour().getDate_retour(), e.getRetour().getDate_retour())){
+                            e.getLocation().listLocation.remove(e.getLocation().listLocation.indexOf(e));
+                        }
                     });
                 }
             });
@@ -76,7 +78,7 @@ public class Engine {
             System.out.println("Id : "+scooter.getId());
             System.out.println("model: "+scooter.getModele());
             System.out.println("kilometrage: "+ scooter.getKilometrage());
-            System.out.println("Etat: "+(scooter.getEtat()? "Disponible":"Non Disponible"));
+            System.out.println("Etat: "+(scooter.listLocation.isEmpty()? "Disponible":"Non Disponible"));
         }
 
     }
@@ -87,7 +89,7 @@ public class Engine {
             System.out.println("Id : "+scooter.getId());
             System.out.println("Model: "+scooter.getModele());
             System.out.println("kilometrage: "+scooter.getKilometrage());
-            System.out.println("etat: "+(scooter.getEtat()?"Disponible":"Non Disponible"));
+            System.out.println("etat: "+(scooter.listLocation.isEmpty()?"Disponible":"Non Disponible"));
             System.out.println("--------------------------------------------------------------------------");
         }
 
@@ -99,7 +101,7 @@ public class Engine {
         System.out.println("Les scooter en location sont: ");
         Vector<Scooter> parcScooter = parc.getListscooter();
         for(Scooter scooter : parcScooter){
-            if(!scooter.estDisponible){
+            if(scooter.listLocation.size()>0){
                 System.out.println("scooter : "+scooter.getId());
             }
         }
@@ -108,7 +110,7 @@ public class Engine {
 
         System.out.println("Les scooter disponibles sont: ");
         for(Scooter scooter:parcScooter){
-            if(scooter.estDisponible){
+            if(!scooter.listLocation.isEmpty()){
                 System.out.println("scooter: "+scooter.getId());
             }
         }
