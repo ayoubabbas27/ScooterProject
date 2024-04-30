@@ -1,10 +1,12 @@
 import model.*;
+import view.*;
+import view.Myframe;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        /*Scanner input = new Scanner(System.in);
         System.out.println("bienvenue dans notre programe");
         
         System.out.println("donner le nombre de scooter que vous avez dans votre parc: ");
@@ -14,18 +16,11 @@ public class Main{
             for(int index = 0 ; index<nombreScooter;index++){
                 String model;
                 float kilo;
-                int dispo;
                 System.out.println("donner sont model: ");
                 model = input.next();
                 System.out.println("donner sont kilometrage:  ");
                 kilo = input.nextFloat();
-                System.out.println("donner ca disponibilite: 1->disponible 2->non Disponible");
-                dispo = input.nextInt();
-                if(dispo==1){
-                    engine.ajouterScooter(model, kilo, true);
-                }else{
-                    engine.ajouterScooter(model, kilo, false);
-                }
+                engine.ajouterScooter(model, kilo);
             }
         }
 
@@ -48,16 +43,9 @@ public class Main{
                         String model = input.next();
                         System.out.println("donner sont kilometrage: ");
                         float kilometrage = input.nextFloat();
-                        System.out.println("est disponibles: 1 pour vrai 0 pour faux ");
-                        int tmporary = input.nextInt();
-                        boolean estDisponible;
-                        if(tmporary==1){
-                            estDisponible = true;
-                        }else{
-                            estDisponible = false;
-                        }
+                        
                     
-                        engine.ajouterScooter(model, kilometrage, estDisponible);
+                        engine.ajouterScooter(model, kilometrage);
                     } catch (Exception e) {
                         System.out.println("une erreur c'est produit");
                     }
@@ -137,6 +125,8 @@ public class Main{
                 System.out.println("votre choix n'exist pas ai revoire :)");
                     break;
             }
-        } while (response<8);
+        } while (response<8);*/
+
+        Welcome welcomePage = new Welcome();
     }
 }

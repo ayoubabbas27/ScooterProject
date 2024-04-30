@@ -32,7 +32,7 @@ public class Engine {
         
     }
 
-    public void ajouterScooter(String model , float kilometrage , boolean estDisponible){
+    public void ajouterScooter(String model , float kilometrage){
         parc.setListScotter(new Scooter(model, kilometrage));
     }
 
