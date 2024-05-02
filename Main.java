@@ -1,6 +1,7 @@
 import model.*;
 import view.*;
-import view.Myframe;
+import view.components.Myframe;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -127,6 +128,7 @@ public class Main{
             }
         } while (response<8);*/
 
-        Welcome welcomePage = new Welcome();
+        //Welcome welcomePage = new Welcome();
+        HomePage home = new HomePage();
     }
 }

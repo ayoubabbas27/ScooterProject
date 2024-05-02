@@ -3,15 +3,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import view.components.HeadingText;
+import view.components.Mybutton;
+import view.components.Myframe;
+import view.components.MytextField;
 
 
 public class Welcome extends Myframe {
-    private String usernametxt;
-    private String passwordtxt;
 
     public Welcome (){
         super("Welcome",400,400);
