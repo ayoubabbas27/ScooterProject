@@ -50,13 +50,16 @@ public class HomePage extends Myframe {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("hello everybody");
             }
+            
         });
         mainShow.add(louerScooter);
         GridCard retournerScooter = new GridCard("Retourner \n Scooter", Color.WHITE, Color.DARK_GRAY);
         retournerScooter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                System.out.println("retourner Scooter");
+                RetournerScooter retourner = new RetournerScooter();
+                retourner.setVisible(true);
+                retourner.show();
             }
         });
         mainShow.add(retournerScooter);
@@ -64,7 +67,9 @@ public class HomePage extends Myframe {
         afficherParc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                System.out.println("Affichage Parc");
+                ParcdeScooter parcView = new ParcdeScooter();
+                parcView.setVisible(true);
+                parcView.show();
             }
         });
         mainShow.add(afficherParc);
