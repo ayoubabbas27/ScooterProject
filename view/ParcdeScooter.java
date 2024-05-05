@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,50 +11,58 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import view.components.DataDiv;
+import view.components.HeadingText;
 import view.components.Mybutton;
 import view.components.Myframe;
 
 public class ParcdeScooter extends Myframe {
     ParcdeScooter() {
         super("Parc de Scooter", 500, 1200);
-        JPanel heading = new JPanel();
-        heading.setLayout(new FlowLayout());
-        JLabel textheading = new JLabel("Saisie de parc des scooters");
-        textheading.setFont(new Font("Arial", Font.BOLD, 18));
-        heading.add(textheading, FlowLayout.CENTER);
-        heading.setForeground(Color.white);
-        heading.setBackground(Color.darkGray);
+        JPanel header = new JPanel();
+        HeadingText headingText = new HeadingText("Saisir le parc des Scooters");
+        header.setBackground(Color.DARK_GRAY);
+        headingText.setFont(new Font("Arial",Font.BOLD,18));
+        headingText.setBackground(Color.DARK_GRAY);
+        headingText.setForeground(Color.WHITE);
+        header.add(headingText,BorderLayout.CENTER);
 
-        DataDiv nombreDeScooter = new DataDiv("Nombre De Scooters", "120");
-        DataDiv nombreLocalisation = new DataDiv("Nombre de Scooters en Location", "40");
-        DataDiv nombreScooterDispo = new DataDiv("Nombre de Scooter Disponible", "80");
-        DataDiv nombreKilometrage = new DataDiv("Nombre Moyen de kilometrage est : ", "360.145");
+        JPanel mainHome = new JPanel();
+        mainHome.setLayout(new GridLayout(4, 1,20,20));
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(4, 1));
+        JPanel container1 = new JPanel();
+        container1.setLayout(new GridLayout(2,1));
+        JPanel container2 = new JPanel();
+        container2.setLayout(new GridLayout(2,1));
 
-        mainPanel.add(nombreDeScooter);
-        mainPanel.add(nombreLocalisation);
-        mainPanel.add(nombreScooterDispo);
-        mainPanel.add(nombreKilometrage);
+        Mybutton visualiserLocation = new Mybutton("Visualiser", Color.white, Color.BLUE);
+        Mybutton visualiserDispo = new Mybutton("Visualiser", Color.WHITE, Color.BLUE);
+        visualiserDispo.setPreferredSize(new Dimension(200,150));
+        visualiserLocation.setPreferredSize(new Dimension(200,150));
 
-        JPanel footer = new JPanel(new FlowLayout());
-        Mybutton retourBtn = new Mybutton("Retourner à la page précédente", Color.white, Color.red);
-        retourBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                setVisible(false);
-                new HomePage().setVisible(true);
-            }
-        });
-        footer.add(retourBtn, FlowLayout.CENTER);
+        DataDiv nombreScooter = new DataDiv("nombre des scooter", "12500");
 
-        this.setLayout(new BorderLayout());
-        this.add(heading, BorderLayout.NORTH);
-        this.add(mainPanel, BorderLayout.CENTER);
-        this.add(footer, BorderLayout.SOUTH);
+        DataDiv scooterEnLocation = new DataDiv("nombre de Scooter en Locations", "500");
+        container1.add(scooterEnLocation);
+        container1.add(visualiserLocation);
+
+        DataDiv scooterDispo = new DataDiv("nombre de scooter en Dispo", "12000");
+        container2.add(scooterDispo);
+        container2.add(visualiserDispo);
+
+        DataDiv moyenKilo = new DataDiv("le Kilometrage Moyen", "750.2548");
+
+
+
+
+        mainHome.add(nombreScooter);
+        mainHome.add(container1);
+        mainHome.add(container2);
+        mainHome.add(moyenKilo);
+        
+        this.add(header,BorderLayout.NORTH);
+        this.add(mainHome,BorderLayout.CENTER);
     }
 }
