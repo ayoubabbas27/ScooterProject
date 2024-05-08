@@ -19,6 +19,11 @@ import view.components.Mybutton;
 import view.components.Myframe;
 
 public class HomePage extends Myframe {
+
+    public void exitframe(){
+        System.exit(0);
+    }
+
     public HomePage() {
         super("HomePage",500,1200);
         JLabel header = new JLabel("Welcome to LOOSCOOTER", JLabel.CENTER);
@@ -48,7 +53,9 @@ public class HomePage extends Myframe {
         louerScooter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("hello everybody");
+                LouerScooter louerScooter = new LouerScooter(HomePage.this);
+                louerScooter.setVisible(true);
+                louerScooter.show();
             }
             
         });
@@ -57,7 +64,7 @@ public class HomePage extends Myframe {
         retournerScooter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                RetournerScooter retourner = new RetournerScooter();
+                RetournerScooter retourner = new RetournerScooter(HomePage.this);
                 retourner.setVisible(true);
                 retourner.show();
             }

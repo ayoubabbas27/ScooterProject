@@ -4,13 +4,23 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Card extends JPanel {
+public class Card extends JPanel{
+    String id;
+    String model;
+    String kilo;
 
-    public Card(int idScotter, String model, float kilometrage, String status) {
+    public Card(String idScotter, String model, String kilometrage) {
+        this.id =idScotter;
+        this.kilo = kilometrage;
+        this.model = model;
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setPreferredSize(new Dimension(300, 60));
         
@@ -27,7 +37,7 @@ public class Card extends JPanel {
         JLabel kiloLabel = new JLabel("Kilometrage: " + kilometrage);
         this.add(kiloLabel);
 
-        JLabel statusLabel = new JLabel("Status: " + status);
-        this.add(statusLabel);
     }
+    
+    
 }

@@ -3,15 +3,10 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import view.components.DataDiv;
 import view.components.HeadingText;
@@ -19,6 +14,7 @@ import view.components.Mybutton;
 import view.components.Myframe;
 
 public class ParcdeScooter extends Myframe {
+    
     ParcdeScooter() {
         super("Parc de Scooter", 500, 1200);
         JPanel header = new JPanel();

@@ -10,13 +10,15 @@ import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 public class RetournerScooter extends Myframe {
-    RetournerScooter() {
+    RetournerScooter(Myframe prev) {
         super("Retourner Scooter", 500, 1200);
         this.setLayout(new BorderLayout());
         
@@ -24,6 +26,12 @@ public class RetournerScooter extends Myframe {
         heading.setFont(new Font("Arial", Font.BOLD, 18));
 
         Mybutton exitBtn = new Mybutton("annuler", Color.white, Color.red);
+        exitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                RetournerScooter.this.setVisible(false);
+            }
+        });
         Mybutton valider = new Mybutton("valider", Color.white, Color.blue);
 
         JPanel footer = new JPanel();
