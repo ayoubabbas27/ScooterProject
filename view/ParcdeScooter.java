@@ -21,8 +21,8 @@ public class ParcdeScooter extends Myframe {
         HeadingText headingText = new HeadingText("Saisir le parc des Scooters");
         header.setBackground(Color.DARK_GRAY);
         headingText.setFont(new Font("Arial",Font.BOLD,18));
-        headingText.setBackground(Color.DARK_GRAY);
         headingText.setForeground(Color.WHITE);
+        headingText.setBackground(Color.DARK_GRAY);
         header.add(headingText,BorderLayout.CENTER);
 
         JPanel mainHome = new JPanel();

@@ -54,6 +54,7 @@ public class HomePage extends Myframe {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LouerScooter louerScooter = new LouerScooter(HomePage.this);
+                HomePage.this.setVisible(false);
                 louerScooter.setVisible(true);
                 louerScooter.show();
             }

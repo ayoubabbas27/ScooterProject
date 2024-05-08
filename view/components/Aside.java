@@ -11,14 +11,35 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
 
-import view.data.Data;
 
 public class Aside extends JPanel {
 
-    String idInfo = Data.idClicked;
-    String modelInfo = Data.modelClicked;
-    String kiloInfo = Data.kiloClicked;
+    private String idInfo = "Selectioner un scooter";
+    private String modelInfo = "Selectioner un scooter";
+    private String kiloInfo = "Selectioner un scooter";
+    private DataDiv idDiv;
+    private DataDiv modelDiv;
+    private DataDiv kiloDiv;
 
+    public void setDataid(String id){
+        idDiv.setValue(id);
+    }
+    public void setDatamodel(String model){
+        modelDiv.setValue(model);
+    }
+    public void setDataKilo(String kilo){
+        kiloDiv.setValue(kilo);
+    }
+
+    public DataDiv getIdDiv(){
+        return this.idDiv;
+    }
+    public DataDiv getModelDiv(){
+        return this.modelDiv;
+    }
+    public DataDiv getKiloDiv(){
+        return this.kiloDiv;
+    }
 
     public Aside(Myframe passPage,Myframe currentPage) {
         this.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
@@ -27,7 +48,7 @@ public class Aside extends JPanel {
         HeadingText heading = new HeadingText("Parc des scooters");
         heading.setBackground(Color.lightGray);
         
-        MytextField searchBar = new MytextField(30, 150);
+        MytextField searchBar = new MytextField(30, 150,true);
         Mybutton search = new Mybutton("search",Color.WHITE,Color.blue);
         Mybutton exit = new Mybutton("retourner",Color.white,Color.RED);
 
@@ -39,27 +60,13 @@ public class Aside extends JPanel {
             }
         });
         
-        DataDiv idDiv = new DataDiv("id", this.idInfo);
+        idDiv = new DataDiv("id", this.idInfo);
         idDiv.setBackground(Color.LIGHT_GRAY);
-        DataDiv modelDiv = new DataDiv("model", this.modelInfo);
+        modelDiv = new DataDiv("model", this.modelInfo);
         modelDiv.setBackground(Color.LIGHT_GRAY);
-        DataDiv kiloDiv = new DataDiv("kilometrage", this.kiloInfo);
+        kiloDiv = new DataDiv("kilometrage", this.kiloInfo);
         kiloDiv.setBackground(Color.LIGHT_GRAY);
         
-        Data.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if ("idClicked".equals(evt.getPropertyName())) {
-                    idDiv.setValue(Data.idClicked);
-                } else if ("modelClicked".equals(evt.getPropertyName())) {
-                    modelDiv.setValue(Data.modelClicked);
-                } else if ("kiloClicked".equals(evt.getPropertyName())) {
-                    kiloDiv.setValue(Data.kiloClicked);
-                }
-            
-            }
-            
-        });
 
         this.add(heading);
         this.add(searchBar);
@@ -69,12 +76,11 @@ public class Aside extends JPanel {
         this.add(kiloDiv);
         this.repaint();
 
-        if (!idInfo.equals("Selectioner un scooter")) {
-            Mybutton louerBtn = new Mybutton("Louer ce scooter", Color.WHITE, Color.BLUE);
-            Mybutton plusBtn = new Mybutton("plus de details", Color.white, Color.GREEN);
-            this.add(louerBtn);
-            this.add(plusBtn);
-        }
+        Mybutton louerBtn = new Mybutton("Louer ce scooter", Color.WHITE, Color.BLUE);
+        Mybutton plusBtn = new Mybutton("plus de details", Color.white, Color.GREEN);
+        this.add(louerBtn);
+        this.add(plusBtn);
+        
 
         this.add(exit);
 

@@ -14,7 +14,7 @@ public class LouerScooter extends Myframe {
         super("louer Scooter",1200,1200);
         this.setLayout(new BorderLayout());
         Aside myAside  = new Aside(homepage,this);
-        SectionView section = new SectionView(myAside);
+        SectionView section = new SectionView(myAside,this);
 
         
         this.add(myAside,BorderLayout.WEST);

@@ -26,6 +26,21 @@ public class MytextField extends JTextField implements ActionListener{
         }
         this.addActionListener(this);
     }
+    public MytextField(int height,int width,boolean isNumbers){
+        setPreferredSize(new Dimension(width, height));
+        if (isNumbers) {
+            addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    char c = e.getKeyChar();
+                    if (!Character.isDigit(c)) {
+                        e.consume();
+                    }
+                }
+            });
+        }
+        this.addActionListener(this);
+    }
 
     public MytextField(int height, int width) {
         super();

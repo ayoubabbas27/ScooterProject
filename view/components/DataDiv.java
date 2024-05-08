@@ -12,6 +12,7 @@ public class DataDiv extends JPanel {
     public void setValue(String value) {
         this.value = value;
         ((JLabel)getComponent(1)).setText(value); 
+        this.repaint();
     }
 
     public DataDiv(String text, String value) {

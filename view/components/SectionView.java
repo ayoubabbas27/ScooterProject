@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import model.Scooter;
-import view.data.Data;
+import view.LouerScooter;
 
 public class SectionView extends JPanel {
     private Scooter[] myList = { 
@@ -20,7 +20,7 @@ public class SectionView extends JPanel {
         new Scooter("TMAX", 15482),
     };
 
-    public SectionView(Aside aside) {
+    public SectionView(Aside aside,LouerScooter frame) {
         this.setBackground(Color.RED);
         this.setLayout(new FlowLayout(FlowLayout.LEADING, 30, 20));
 
@@ -29,10 +29,9 @@ public class SectionView extends JPanel {
             card.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Data.idClicked = card.id;
-                    Data.modelClicked = card.model;
-                    Data.kiloClicked = card.kilo;
-                    aside.repaint();
+                    aside.setDataid(card.id);
+                    aside.setDataKilo(card.kilo);
+                    aside.setDatamodel(card.model);
                 }
             });
             this.add(card);
